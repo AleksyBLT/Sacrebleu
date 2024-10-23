@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+#game {
+    margin: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.stats {
+    font-size: 18px;
+    margin: 20px;
+}
+
+#events {
+    margin-top: 30px;
+}
+
+#eventMessage {
+    font-style: italic;
+    color: #e74c3c;
+}
