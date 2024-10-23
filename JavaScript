@@ -1,0 +1,97 @@
+let racletteCount = 0;
+let reblochonCount = 0;
+let montdorCount = 0;
+let money = 0;
+let level = 1;
+let raclettePrice = 5;
+let reblochonPrice = 8;
+let montdorPrice = 12;
+
+// Variables pour débloquer des niveaux
+let racletteLimit = 10; // Débloque le niveau 2
+let reblochonLimit = 50; // Débloque le niveau 3
+let montdorLimit = 100; // Débloque le niveau 4
+
+// Mises à jour des éléments de la page
+function updateStats() {
+    document.getElementById("racletteCount").innerText = racletteCount;
+    document.getElementById("reblochonCount").innerText = reblochonCount;
+    document.getElementById("montdorCount").innerText = montdorCount;
+    document.getElementById("money").innerText = money;
+    document.getElementById("level").innerText = level;
+}
+
+// Fonction pour produire du fromage
+function produceCheese(type) {
+    if (type === 'raclette') {
+        racletteCount++;
+        money += raclettePrice;
+    } else if (type === 'reblochon') {
+        reblochonCount++;
+        money += reblochonPrice;
+    } else if (type === 'montdor') {
+        montdorCount++;
+        money += montdorPrice;
+    }
+    checkLevelUp();
+    updateStats();
+}
+
+// Gestion des niveaux et des déblocages
+function checkLevelUp() {
+    if (level === 1 && racletteCount >= racletteLimit) {
+        levelUp();
+        document.getElementById("produceReblochon").disabled = false;
+        addEventMessage("Félicitations! Vous avez débloqué le Reblochon.");
+    }
+    if (level === 2 && reblochonCount >= reblochonLimit) {
+        levelUp();
+        document.getElementById("produceMontdor").disabled = false;
+        addEventMessage("Super! Vous pouvez maintenant produire du Mont d'Or.");
+    }
+    if (level === 3 && montdorCount >= montdorLimit) {
+        levelUp();
+        addEventMessage("Votre fromagerie est maintenant internationale!");
+    }
+}
+
+// Augmenter de niveau
+function levelUp() {
+    level++;
+    updateStats();
+}
+
+// Événements aléatoires
+let events = [
+    "Tempête de neige! Retard dans les livraisons.",
+    "Une grande commande pour un mariage arrive! Préparez-vous.",
+    "Panne de réfrigérateur, vérifiez la conservation des fromages!",
+    "Un critique gastronomique adore votre Reblochon!",
+    "Problème d'étiquetage, certains fromages sont renvoyés."
+];
+
+function triggerRandomEvent() {
+    let randomIndex = Math.floor(Math.random() * events.length);
+    addEventMessage(events[randomIndex]);
+}
+
+// Ajouter un message d'événement
+function addEventMessage(message) {
+    document.getElementById("eventMessage").innerText = message;
+}
+
+// Boutons de production
+document.getElementById("produceRaclette").addEventListener("click", function() {
+    produceCheese('raclette');
+});
+
+document.getElementById("produceReblochon").addEventListener("click", function() {
+    produceCheese('reblochon');
+});
+
+document.getElementById("produceMontdor").addEventListener("click", function() {
+    produceCheese('montdor');
+});
+
+// Déclenche un événement toutes les 15 secondes
+setInterval(triggerRandomEvent, 15000);
