@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacrebleu! - Fromagerie Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sacrebleu! - Fromagerie Simulator</h1>
+
+    <div id="game">
+        <div class="stats">
+            <p>Niveau: <span id="level">1</span></p>
+            <p>Meules de Raclette: <span id="racletteCount">0</span></p>
+            <p>Reblochon: <span id="reblochonCount">0</span></p>
+            <p>Mont d'Or: <span id="montdorCount">0</span></p>
+            <p>Argent: €<span id="money">0</span></p>
+        </div>
+        <div id="actions">
+            <button class="button" id="produceRaclette">Produire Raclette</button>
+            <button class="button" id="produceReblochon" disabled>Produire Reblochon</button>
+            <button class="button" id="produceMontdor" disabled>Produire Mont d'Or</button>
+        </div>
+        <div id="events">
+            <h2>Événements</h2>
+            <p id="eventMessage">Aucun événement pour l'instant</p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
